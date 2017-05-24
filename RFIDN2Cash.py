@@ -119,16 +119,16 @@ def user_login(readtag):
     else:
         return 1
 
-def time_tracker(time):
+def time_tracker(usertime):
     #returns the time user has been using the machine.
     #if argument is 1, timer starts and function returns start time in seconds
     #if argument is 0, timer ends and elapsed time is returned in minutes 
     
-    if time == 1:
+    if usertime == 1:
         global start
         start = time.time() #time at beginning 
         return start
-    if time == 0:
+    if usertime == 0:
         end = time.time() #at some other point
         elapsed = (end - start) / 60
         return elapsed
@@ -177,16 +177,22 @@ try:
             #print to LCD
             #print("User authorized") #print statement would be unnecessarily repeated
 
-            #if user is already logged in, store login time, update dict and turn off tool
+            #if user is already logged in, store login time, update dict, turn off tool, log user out
             if user_login(Current_readtag) == 1:
+                
                 #turn off tool
                 toggle_tool(0)
+                
                 #store elapsed time used tool and update dictionary
                 usage = time_tracker(0)
                 status = user_update(Current_readtag, usage)
+                
                 if status == 0:
                     print("User ran out of time")
                     #print to LCD
+                
+                #log person out by updating user variable
+                user_logged_in = 0
             
             #executes if user is not already logged in    
             elif user_login(Current_readtag) == 0:    #add "and user is not different from last logged in user" to this statement?
