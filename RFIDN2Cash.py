@@ -211,7 +211,7 @@ try:
                     
                 elif Credit_status == 1:
                     #print to LCD
-                    print("Tool enabled, User Credit Remaining:  %d" + Credit_remaining)
+                    print("Tool enabled, User Credit Remaining: "+ str(Credit_remaining))
                     
                     #update login variable
                     user_logged_in = 1
