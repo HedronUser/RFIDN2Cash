@@ -8,14 +8,14 @@ Created on Thu May 18 12:02:22 2017
 import sys
 import time
 import curses
-import logging
-
-logging.basicConfig(
-        level=logging.INFO,
-        # stream=sys.stdout,
-        filename='~/RFID2Cash/log.log',
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+#import logging
+#
+#logging.basicConfig(
+#        level=logging.INFO,
+#        # stream=sys.stdout,
+#        filename='~/RFID2Cash/log.log',
+#        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+#logger = logging.getLogger(__name__)
 
 import RPi.GPIO as GPIO #only works on Raspberry Pi
 
@@ -54,11 +54,11 @@ def user_authorized(readtag):
     #if user is not authorized (RFID TAG NOT IN DICTIONARY) returns 0
     
     if readtag in Credit_dict.keys():
-        logger.debug("User Authorized")
+#        logger.debug("User Authorized")
         #time.sleep(2)
         return 1
     else:
-        logger.debug("Unauthorized User")
+#        logger.debug("Unauthorized User")
         #time.sleep(2)
         return 0
         #break
